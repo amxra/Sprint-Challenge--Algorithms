@@ -96,33 +96,42 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        if not self.can_move_right() and not self.set_light_on():
-            return
-        else:
-            self.set_light_on()
-            self.swap_item()
-            while self.can_move_right():
-                self.move_right()
-                self.compare_item()
-                if self.compare_item() == 1:
-                    self.swap_item()
-                while self.compare_item() is not None:
-                    self.set_light_off()
-                    self.move_left()
+         # Fill this out
+        self.set_light_on()  # initalize the bot memory with light
+        while self.light_is_on() == True:
 
+            self.set_light_off()  # reset & end inital while loop
+            # move as far right as possible
+            while self.can_move_right() == True:
                 self.swap_item()
                 self.move_right()
-                print(self._time)
-                return self.sort()
+                # Compare item being held by robot to current item in list. If held item > current item, swap.
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.set_light_on()
+                # Move through the rest of list
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                # move as far left as possible
+            while self.can_move_left() == True:
+                self.swap_item()
+                self.move_left()
+                # Compare item being held by robot to current item in list. If held item < current item, swap.
+                if self.compare_item() == -1:
+                    self.swap_item()
+                    self.set_light_on()
+                # Move through the rest of list
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+        return
 
-    '''Like in bubble sort, comparing direct next items. If light switch is on, player can move
+'''Like in bubble sort, comparing direct next items. If light switch is on, player can move
         player compares current item with next item, if it is bigger or the same it remains if it is smaller they are switched
         if light switch is on it repeats the process again. 
 
     '''
-
-
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
@@ -134,3 +143,7 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
+
+
+    
