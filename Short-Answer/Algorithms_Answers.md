@@ -2,40 +2,19 @@
 
 ## Exercise I
 
-a) O(n)
-    Explanation:
-    a = 0 #O(1)
-  
-  
-  <!-- a = 0 #O(1)
-    while (a < n * n * n): #O(n) + O(1)
-      a = a + n * n # O(1)
-    #O(1) + O(n) + O(1)
-    # O(2) + O(n)
-    #O(n) -->
+a) Time Complexity: O(n) 
+
+because: (10 * 10 * 10) / (10 * 10) = 10 every iteration a gets added with n * n until a is equal or bigger than n * n * n
 
 
-b) O(n^2)
+b) Time Complexity: O(n log n) 
 
-<!-- sum = 0 #O(1)
-    for i in range(n): #O(n) + #O(1)
-      j = 1 #O(1)
-      while j < n: #O(n) + #O(1) + #O(1)
-        j *= 2  #O(1)
-        sum += 1 #O(1)
-        #(O(1) + #O(n) + #O(1)) * (#O(n) + #O(1) + #O(1))
-        #O(2) + #O(n) * #O(2) + #O(n)
-        # O(n) * O(n)
-        # O(n^2) -->
+because we have a for loop with O(n) and a nested while loop whichs loops until the var j (which is 1) got multiplied by 2 every iteration until it reaches the value of n or get higher than n
+
+c) Time Complexity: O(n) 
 
 
-c) O(n)
-
-<!-- def bunnyEars(bunnies): #O(n)
-      if bunnies == 0: #O(1)
-        return 0 #O(1)
-      return 2 + bunnyEars(bunnies-1) #O(n)
-      #O(n^2) -->
+This a recursive function. When we call bunnyEars(5) the function returs bunnyEars(4) then bunnyEars(3) then bunnyEars(2) then bunnyEars(1) then bunyEars(0) and we trigger the base case : if bunnies == 0: return 0
 
 ## Exercise II
 
