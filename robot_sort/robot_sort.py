@@ -97,7 +97,31 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        if not self.can_move_right() and not self.set_light_on():
+            return
+        else:
+            self.set_light_on()
+            self.swap_item()
+            while self.can_move_right():
+                self.move_right()
+                self.compare_item()
+                if self.compare_item() == 1:
+                    self.swap_item()
+                while self.compare_item() is not None:
+                    self.set_light_off()
+                    self.move_left()
+
+                self.swap_item()
+                self.move_right()
+                print(self._time)
+                return self.sort()
+
+    '''Like in bubble sort, comparing direct next items. If light switch is on, player can move
+        player compares current item with next item, if it is bigger or the same it remains if it is smaller they are switched
+        if light switch is on it repeats the process again. 
+
+    '''
+
 
 
 if __name__ == "__main__":
